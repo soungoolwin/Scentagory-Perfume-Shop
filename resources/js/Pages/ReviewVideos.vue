@@ -4,17 +4,16 @@
             <div class="grid grid-cols-12 gap-4">
                 <div class="lg:col-span-2"></div>
                 <div class="col-span-12 lg:col-span-8">
-                    <h1 class="text-4xl font-semibold mb-8 text-center">
+                    <h1
+                        class="text-4xl font-semibold mb-8 text-center cormorant-garamond-regular"
+                    >
                         Review Videos
                     </h1>
-                    <div class="space-y-8">
+                    <div class="grid gap-6 lg:grid-cols-2">
                         <div
                             v-for="(video, index) in videos"
                             :key="index"
-                            class="grid grid-cols-1 md:grid-cols-2 gap-4"
-                            :class="{
-                                'md:grid-cols-2-reverse': index % 2 !== 0,
-                            }"
+                            class="border rounded-lg overflow-hidden shadow-lg"
                         >
                             <div class="aspect-w-16 aspect-h-9">
                                 <iframe
@@ -24,11 +23,17 @@
                                     class="w-full h-full"
                                 ></iframe>
                             </div>
-                            <div class="flex flex-col justify-center">
-                                <h2 class="text-2xl font-semibold mb-2">
+                            <div class="p-6">
+                                <h2
+                                    class="text-xl font-semibold mb-2 cormorant-garamond-regular"
+                                >
                                     {{ video.name }}
                                 </h2>
-                                <p>{{ video.caption }}</p>
+                                <p
+                                    class="text-gray-600 cormorant-garamond-regular"
+                                >
+                                    {{ video.description }}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -45,41 +50,11 @@ import AppLayout from "../Layouts/AppLayout.vue";
 export default {
     components: { AppLayout },
     name: "ReviewVideos",
-    data() {
-        return {
-            videos: [
-                {
-                    url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                    name: "Video Title 1",
-                    caption: "This is a caption for video 1.",
-                },
-                {
-                    url: "https://www.youtube.com/embed/3JZ_D3ELwOQ",
-                    name: "Video Title 2",
-                    caption: "This is a caption for video 2.",
-                },
-                {
-                    url: "https://www.youtube.com/embed/tgbNymZ7vqY",
-                    name: "Video Title 3",
-                    caption: "This is a caption for video 3.",
-                },
-                {
-                    url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                    name: "Video Title 4",
-                    caption: "This is a caption for video 4.",
-                },
-                {
-                    url: "https://www.youtube.com/embed/3JZ_D3ELwOQ",
-                    name: "Video Title 5",
-                    caption: "This is a caption for video 5.",
-                },
-                {
-                    url: "https://www.youtube.com/embed/tgbNymZ7vqY",
-                    name: "Video Title 6",
-                    caption: "This is a caption for video 6.",
-                },
-            ],
-        };
+    props: {
+        videos: {
+            type: Array,
+            required: true,
+        },
     },
 };
 </script>
@@ -103,13 +78,9 @@ export default {
     height: 100%;
 }
 
-.md\:grid-cols-2-reverse {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    direction: rtl;
-}
-
-.md\:grid-cols-2-reverse > * {
-    direction: ltr;
+@media (max-width: 767px) {
+    .lg\:col-span-2 {
+        display: none;
+    }
 }
 </style>

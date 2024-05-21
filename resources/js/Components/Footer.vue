@@ -19,7 +19,7 @@
                         <i class="fa-brands fa-facebook"></i>
                     </a>
                     <a href="#" class="hover:underline">
-                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-youtube"></i>
                     </a>
                     <a href="#" class="hover:underline">
                         <i class="fa-brands fa-instagram"></i>
