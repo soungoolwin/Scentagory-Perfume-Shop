@@ -1,9 +1,9 @@
 <template>
-    <app-layout>
+    <AppLayout>
         <template #default>
             <hero />
         </template>
-    </app-layout>
+    </AppLayout>
 </template>
 
 <script>
