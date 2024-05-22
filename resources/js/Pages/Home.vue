@@ -1,20 +1,20 @@
 <template>
     <AppLayout>
-        <template #default>
-            <hero />
-        </template>
+        <h1>Hello</h1>
     </AppLayout>
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout.vue";
-import Hero from "../Components/Hero.vue";
+import { defineComponent } from "vue";
+import AppLayout from "../Layouts/AppLayout.vue";
 
-export default {
-    props: {},
-    components: {
-        AppLayout,
-        Hero,
+export default defineComponent({
+    name: "Home",
+    components: { AppLayout },
+    setup() {
+        return {};
     },
-};
+});
 </script>
+
+<style scoped></style>

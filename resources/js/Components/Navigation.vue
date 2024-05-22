@@ -94,7 +94,9 @@
                         >
                     </li>
                     <li>
-                        <Link href="/" class="hover:underline px-5 text-white"
+                        <Link
+                            href="/products/decants"
+                            class="hover:underline px-5 text-white"
                             >Products</Link
                         >
                     </li>
@@ -226,7 +228,7 @@
                             </svg>
 
                             <Link
-                                href="/products"
+                                href="/products/decants"
                                 class="hover:underline text-white text-xl"
                                 >Products</Link
                             >
