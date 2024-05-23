@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('decants', function (Blueprint $table) {
+        Schema::create('prices', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('decant_id')->constrained()->onDelete('cascade');
+            $table->foreignId('size_id')->constrained()->onDelete('cascade');
+            $table->decimal('price', 10, 2);
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('decants');
+        Schema::dropIfExists('prices');
     }
 };

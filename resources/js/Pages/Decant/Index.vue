@@ -1,30 +1,15 @@
 <template>
     <AppLayout>
-        <!-- <div class="container mx-auto py-12 px-4 md:px-0">
-            <div class="flex items-center justify-between mb-6">
-                <h1 class="text-4xl font-semibold cormorant-garamond-regular">
-                    Decants
-                </h1>
-                <div>
-                    <label for="sort" class="sr-only">Sort by</label>
-                    <select id="sort" name="sort" class="form-select">
-                        <option>Sort by popularity</option>
-                        <option>Sort by price: low to high</option>
-                        <option>Sort by price: high to low</option>
-                    </select>
-                </div>
-            </div>
-
-        </div> -->
         <div class="bg-[#F4F4F4]">
             <div class="container mx-auto py-12 px-4 md:px-0">
                 <div class="grid grid-cols-12 gap-10">
                     <div class="md:col-span-1"></div>
+                    <!-- Filter Column -->
                     <div
-                        class="col-span-12 md:col-span-3 hidden md:block bg-[#FFFFFF] p-4 rounded-md"
+                        class="col-span-12 md:col-span-3 hidden md:block p-4 rounded-md mt-[100px]"
                     >
                         <div
-                            class="max-w-sm mx-auto bg-white shadow-md rounded-lg overflow-hidden"
+                            class="max-w-sm mx-auto bg-white shadow-md rounded-lg overflow-hidden h-[2150px]"
                         >
                             <div class="px-4 py-2 bg-white">
                                 <h2 class="text-xl font-bold">Brands</h2>
@@ -37,7 +22,6 @@
                             </div>
 
                             <div class="px-4 py-2">
-                                <p>Category</p>
                                 <div
                                     class="font-sans text-black bg-white flex items-center justify-center my-3"
                                 >
@@ -70,9 +54,11 @@
                             <div class="">
                                 <div class="container px-5 mx-auto">
                                     <div
-                                        class="divide-y overflow-auto h-[300px]"
+                                        class="scroll-container divide-y overflow-auto h-[2000px]"
                                     >
                                         <div
+                                            v-for="brand in brands"
+                                            :key="brand.id"
                                             class="flex items-start space-x-3 py-6"
                                         >
                                             <input
@@ -84,75 +70,7 @@
                                                 <h1
                                                     class="text-gray-700 jost-300 leading-none"
                                                 >
-                                                    Antibiotic
-                                                </h1>
-                                            </div>
-                                        </div>
-
-                                        <div
-                                            class="flex items-start space-x-3 py-6"
-                                        >
-                                            <input
-                                                type="checkbox"
-                                                class="border-gray-300 rounded h-3 w-3"
-                                            />
-
-                                            <div class="flex flex-col">
-                                                <h1
-                                                    class="text-gray-700 jost-300 leading-none"
-                                                >
-                                                    Baby Care
-                                                </h1>
-                                            </div>
-                                        </div>
-
-                                        <div
-                                            class="flex items-start space-x-3 py-6"
-                                        >
-                                            <input
-                                                type="checkbox"
-                                                class="border-gray-300 rounded h-3 w-3"
-                                            />
-
-                                            <div class="flex flex-col">
-                                                <h1
-                                                    class="text-gray-700 jost-300 leading-none"
-                                                >
-                                                    Cold and Fever
-                                                </h1>
-                                            </div>
-                                        </div>
-
-                                        <div
-                                            class="flex items-start space-x-3 py-6"
-                                        >
-                                            <input
-                                                type="checkbox"
-                                                class="border-gray-300 rounded h-3 w-3"
-                                            />
-
-                                            <div class="flex flex-col">
-                                                <h1
-                                                    class="text-gray-700 jost-300 leading-none"
-                                                >
-                                                    Face
-                                                </h1>
-                                            </div>
-                                        </div>
-
-                                        <div
-                                            class="flex items-start space-x-3 py-6"
-                                        >
-                                            <input
-                                                type="checkbox"
-                                                class="border-gray-300 rounded h-3 w-3"
-                                            />
-
-                                            <div class="flex flex-col">
-                                                <h1
-                                                    class="text-gray-700 jost-300 leading-none"
-                                                >
-                                                    Hair
+                                                    {{ brand.name }}
                                                 </h1>
                                             </div>
                                         </div>
@@ -161,34 +79,67 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Content Column -->
                     <div class="col-span-12 md:col-span-7">
                         <div class="container mx-auto py-12 px-4 md:px-0">
                             <h1 class="text-4xl font-semibold mb-8 text-center">
                                 Perfumes
                             </h1>
                             <div
-                                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+                                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
                             >
                                 <div
-                                    v-for="perfume in perfumes"
-                                    :key="perfume.id"
+                                    v-for="decant in decants.data"
+                                    :key="decant.id"
                                     class="bg-white rounded-lg shadow-md overflow-hidden"
                                 >
                                     <img
-                                        :src="Perfume"
+                                        :src="decant.img_url"
                                         alt="Perfume Image"
                                         class="w-full h-48 object-cover"
                                     />
                                     <div class="p-4">
                                         <h2 class="text-xl font-semibold">
-                                            {{ perfume.name }}
+                                            {{ decant.name }}
                                         </h2>
                                         <p class="text-gray-600">
-                                            {{ perfume.price_range }}
+                                            20000 - 30000 MMK
                                         </p>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <!-- Paginator -->
+                        <!-- <div class="mt-6">
+                            <Component
+                                :is="link.url ? 'Link' : 'span'"
+                                :key="link.url"
+                                v-for="link in decants.links"
+                                :href="link.url"
+                                v-html="link.label"
+                                class="px-1"
+                                :class="link.url ? '' : 'text-gray-500'"
+                            />
+                        </div> -->
+                        <div class="mt-6 flex justify-center">
+                            <template v-for="link in decants.links">
+                                <template v-if="link.url">
+                                    <Link
+                                        class="paginator-link"
+                                        :key="link.url"
+                                        :href="link.url"
+                                        v-html="link.label"
+                                    />
+                                </template>
+                                <template v-else>
+                                    <span
+                                        class="paginator-label"
+                                        :key="link.url"
+                                        v-html="link.label"
+                                    ></span>
+                                </template>
+                            </template>
                         </div>
                     </div>
                     <div class="md:col-span-1"></div>
@@ -198,74 +149,14 @@
     </AppLayout>
 </template>
 
-<script>
+<script setup>
+import { Link } from "@inertiajs/vue3";
 import AppLayout from "../../Layouts/AppLayout.vue";
-import Perfume from "../../../../public/images/story.jpg";
 
-export default {
-    components: { AppLayout },
-    props: {
-        videos: {
-            type: Array,
-            required: true,
-        },
-    },
-    data() {
-        return {
-            Perfume,
-            perfumes: [
-                {
-                    id: 1,
-                    name: "Perfume A",
-                    image: "/images/perfume-a.jpg",
-                    price_range: "$50 - $70",
-                },
-                {
-                    id: 2,
-                    name: "Perfume B",
-                    image: "/images/perfume-b.jpg",
-                    price_range: "$80 - $100",
-                },
-                {
-                    id: 3,
-                    name: "Perfume C",
-                    image: "/images/perfume-c.jpg",
-                    price_range: "$60 - $90",
-                },
-                {
-                    id: 4,
-                    name: "Perfume D",
-                    image: "/images/perfume-d.jpg",
-                    price_range: "$40 - $60",
-                },
-                {
-                    id: 5,
-                    name: "Perfume E",
-                    image: "/images/perfume-e.jpg",
-                    price_range: "$70 - $110",
-                },
-                {
-                    id: 6,
-                    name: "Perfume F",
-                    image: "/images/perfume-f.jpg",
-                    price_range: "$55 - $75",
-                },
-                {
-                    id: 7,
-                    name: "Perfume G",
-                    image: "/images/perfume-g.jpg",
-                    price_range: "$65 - $85",
-                },
-                {
-                    id: 8,
-                    name: "Perfume H",
-                    image: "/images/perfume-h.jpg",
-                    price_range: "$50 - $70",
-                },
-            ],
-        };
-    },
-};
+defineProps({ decants: Object, brands: Array });
+components: {
+    AppLayout;
+}
 </script>
 
 <style scoped>
@@ -291,5 +182,46 @@ export default {
     .lg\:col-span-2 {
         display: none;
     }
+}
+
+.paginator-link {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-right: 8px;
+    background-color: #f0f0f0; /* Creamy or light gray background */
+    color: #333333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.paginator-link:hover {
+    background-color: #e0e0e0; /* Darker creamy or light gray on hover */
+}
+
+.paginator-label {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-right: 8px;
+    background-color: #ffffff; /* White background */
+    color: #333333;
+    border-radius: 4px;
+}
+
+.scroll-container {
+    /* Add overflow settings for scrolling */
+    overflow: auto;
+    height: 2000px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scroll-container {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 </style>
