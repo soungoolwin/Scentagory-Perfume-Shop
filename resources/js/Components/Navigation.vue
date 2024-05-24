@@ -10,7 +10,7 @@
                         <div class="grid grid-cols-12 gap-4">
                             <!-- Logo -->
                             <div
-                                class="col-span-6 md:col-span-2 flex items-center"
+                                class="col-span-6 md:col-span-4 flex items-center"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -32,27 +32,9 @@
                                 >
                             </div>
 
-                            <!-- Search Box -->
-                            <div
-                                class="col-span-12 md:col-span-6 flex justify-center md:justify-start order-last md:order-none"
-                            >
-                                <div class="flex w-full max-w-lg">
-                                    <input
-                                        type="text"
-                                        placeholder="Search..."
-                                        class="p-2 rounded-l border border-gray-300 w-full focus:outline-none text-black"
-                                    />
-                                    <button
-                                        class="bg-[#483133] text-black p-2 rounded-r hover:bg-[#483133] focus:outline-none"
-                                    >
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-
                             <!-- Social Links -->
                             <div
-                                class="col-span-6 md:col-span-4 flex justify-end items-center"
+                                class="col-span-6 md:col-span-8 flex justify-end items-center"
                             >
                                 <a
                                     href="https://www.facebook.com/Scentagory"
@@ -299,7 +281,8 @@
 </template>
 
 <script>
-import { Link } from "@inertiajs/vue3";
+// import { Link } from "@inertiajs/vue3";
+import { Link } from "@inertiajs/inertia-vue3";
 export default {
     components: {
         Link,
